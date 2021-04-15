@@ -67,6 +67,9 @@ class HMMainViewController: HMBaseViewController, UITableViewDelegate, HMUIViewT
         
         self.locationManager = CLLocationManager()
         self.startUpdateLocation()
+        
+        self.banner = HotmobController(type: .Banner, identifier: "Banner", adCode: "", delegate: self)
+        self.adContainerView.addSubview(banner!.displayView())
     }
     
     
@@ -203,9 +206,10 @@ class HMMainViewController: HMBaseViewController, UITableViewDelegate, HMUIViewT
 //        let con = HotmobiOSSDK.getHotmobBannerController(adCode, needAutoReload: true, delegate: self, identifier: "banner")
 //        self.bannerView = con.returnDisplayView()
 //        self.adContainerView.addSubview(self.bannerView!)
-        self.banner = HotmobController(type: .Banner, identifier: "Banner", adCode: adCode, delegate: self)
-        self.adContainerView.addSubview(banner!.displayView())
-        
+//        self.banner = HotmobController(type: .Banner, identifier: "Banner", adCode: adCode, delegate: self)
+//        self.adContainerView.addSubview(banner!.displayView())
+        self.banner?.hide()
+        self.banner?.adCode = adCode
         self.lblAdCode.text = adCode
     }
 }

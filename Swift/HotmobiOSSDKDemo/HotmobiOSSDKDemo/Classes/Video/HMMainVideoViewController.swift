@@ -42,6 +42,9 @@ class HMMainVideoViewController: HMBaseViewController, UITableViewDelegate, HMUI
         self.setupRearViewController()
         self.setupTableView()
         self.getMainItems()
+        
+        self.banner = HotmobController(type: .Banner, identifier: "VideoBanner", adCode: "", delegate: self)
+        self.adContainerView.addSubview(banner!.displayView())
     }
     
     deinit {
@@ -118,8 +121,8 @@ class HMMainVideoViewController: HMBaseViewController, UITableViewDelegate, HMUI
 //        let con = HotmobiOSSDK.getHotmobBannerController(adCode, needAutoReload: true, delegate: self, identifier: "banner")
 //        self.bannerView = con.returnDisplayView()
 //        self.adContainerView.addSubview(self.bannerView!)
-        self.banner = HotmobController(type: .Banner, identifier: "VideoBanner", adCode: adCode, delegate: self)
-        self.adContainerView.addSubview(banner!.displayView())
+        self.banner?.hide()
+        self.banner?.adCode = adCode
     }
 }
 
